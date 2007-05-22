@@ -12,8 +12,8 @@ in other environments.
 Runtime requirements:
   cygwin-1.5.24-2
   libiconv2-1.11-1
-  libreadline6-5.2.1-6
-  python-2.4.3-1	(for the python bindings)
+  libreadline6-5.2.4-8
+  python-2.5.1-1	(for the python bindings)
   zlib-1.2.3-2
 
 Build requirements:
@@ -48,12 +48,13 @@ This will create:
   /usr/src/libxml2-2.6.28-X.tar.bz2
   /usr/src/libxml2-devel-2.6.28-X.tar.bz2
   /usr/src/libxml2-doc-2.6.28-X.tar.bz2
-  /usr/src/pylibxml2-2.6.28-X.tar.bz2
+  /usr/src/python-libxml2-2.6.28-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the binary package:
+Files included in the binary packages:
 
+(libxml2)
   /usr/bin/cygxml2-2.dll
   /usr/bin/xmlcatalog.exe
   /usr/bin/xmllint.exe
@@ -70,15 +71,13 @@ Files included in the binary package:
   /usr/share/man/man1/xmllint.1.gz
   /usr/share/man/man3/libxml.3.gz
 
-Files included in the python bindings package:
-
+(python-libxml2)
   /usr/lib/python2.4/site-packages/drv_libxml2.py
   /usr/lib/python2.4/site-packages/libxml2.py
   /usr/lib/python2.4/site-packages/libxml2mod.dll
   /usr/lib/python2.4/site-packages/libxml2mod.la
 
-Files included in the devel package:
-
+(libxml2-devel)
   /usr/bin/xml2-config
   /usr/include/libxml2/libxml/DOCBparser.h
   /usr/include/libxml2/libxml/HTMLparser.h
@@ -134,8 +133,7 @@ Files included in the devel package:
   /usr/share/aclocal/libxml.m4
   /usr/share/man/man1/xml2-config.1.gz
 
-Files included in the doc package:
-
+(libxml2-doc)
   /usr/share/doc/libxml2-2.6.28/examples/testHTML.c
   /usr/share/doc/libxml2-2.6.28/examples/testSAX.c
   /usr/share/doc/libxml2-2.6.28/examples/testXPath.c
@@ -338,6 +336,9 @@ Files included in the doc package:
 ------------------
 
 Port Notes:
+
+----- version 2.6.28-2 -----
+Rebuilt for python-2.5.
 
 ----- version 2.6.28-1 -----
 Version bump.
