@@ -10,17 +10,18 @@ library is written in C a variety of language bindings make it available
 in other environments.
 
 Runtime requirements:
-  cygwin-1.5.25-7
+  cygwin-1.5.25-15
   libiconv2-1.11-1
-  libreadline6-5.2.5-7
-  python-2.5.2-1	(for the python bindings)
+  libreadline6-5.2.12-10
   zlib-1.2.3-2
+(python-libxml2)
+  python-2.5.2-3
 
 Build requirements:
   autoconf2.5-2.61-1
   automake1.10-1.10.1-1
-  binutils-20060817-1
-  cygport-0.3.9-1
+  binutils-20080624-2
+  cygport-0.3.13-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
   libtool-2.2.2-2
@@ -57,7 +58,6 @@ Files included in the binary packages:
   /usr/bin/cygxml2-2.dll
   /usr/bin/xmlcatalog.exe
   /usr/bin/xmllint.exe
-  /usr/share/doc/Cygwin/libxml2-2.6.32.README
   /usr/share/doc/libxml2-2.6.32/AUTHORS
   /usr/share/doc/libxml2-2.6.32/COPYING
   /usr/share/doc/libxml2-2.6.32/COPYRIGHT
@@ -339,6 +339,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.6.32-2 -----
+Patch for CVE-2008-3281.
 
 ----- version 2.6.32-1 -----
 Version bump.
