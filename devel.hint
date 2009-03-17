@@ -1,5 +1,5 @@
 category: Gnome Devel
-requires: cygwin libxml2 libiconv zlib
+requires: cygwin libxml2 libiconv zlib-devel
 external-source: libxml2
 sdesc: "XML C parser and toolkit (development)"
 ldesc: "Libxml2 is the XML C parser and toolkit developed for the
