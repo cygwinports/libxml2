@@ -10,10 +10,10 @@ library is written in C a variety of language bindings make it available
 in other environments.
 
 Runtime requirements:
-  cygwin-1.7.0-58
-  libgcc1-4.3.2-2
-  libiconv2-1.12-10
-  libreadline6-5.2.13-11
+  cygwin-1.7.0-62
+  libgcc1-4.3.4-1
+  libiconv2-1.13-10
+  libreadline7-6.0.3-2
   zlib0-1.2.3-10
 (python-libxml2)
   python-2.5.4-10
@@ -38,115 +38,25 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack libxml2-2.7.3-X-src.tar.bz2
+  unpack libxml2-2.7.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./libxml2-2.7.3-X.cygport all
+  cygport ./libxml2-2.7.4-X.cygport all
 
 This will create:
-  /usr/src/libxml2-2.7.3-X-src.tar.bz2
-  /usr/src/libxml2-2.7.3-X.tar.bz2
-  /usr/src/libxml2-devel-2.7.3-X.tar.bz2
-  /usr/src/libxml2-doc-2.7.3-X.tar.bz2
-  /usr/src/python-libxml2-2.7.3-X.tar.bz2
+  /usr/src/libxml2-2.7.4-X-src.tar.bz2
+  /usr/src/libxml2-2.7.4-X.tar.bz2
+  /usr/src/libxml2-devel-2.7.4-X.tar.bz2
+  /usr/src/libxml2-doc-2.7.4-X.tar.bz2
+  /usr/src/python-libxml2-2.7.4-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the binary packages:
-
-(libxml2)
-  /usr/bin/cygxml2-2.dll
-  /usr/bin/xmlcatalog.exe
-  /usr/bin/xmllint.exe
-  /usr/share/doc/libxml2/AUTHORS
-  /usr/share/doc/libxml2/COPYING
-  /usr/share/doc/libxml2/COPYRIGHT
-  /usr/share/doc/libxml2/ChangeLog
-  /usr/share/doc/libxml2/INSTALL
-  /usr/share/doc/libxml2/NEWS
-  /usr/share/doc/libxml2/README
-  /usr/share/doc/libxml2/TODO
-  /usr/share/man/man1/xmlcatalog.1.gz
-  /usr/share/man/man1/xmllint.1.gz
-
-(python-libxml2)
-  /usr/lib/python2.5/site-packages/drv_libxml2.py
-  /usr/lib/python2.5/site-packages/drv_libxml2.pyc
-  /usr/lib/python2.5/site-packages/drv_libxml2.pyo
-  /usr/lib/python2.5/site-packages/libxml2.py
-  /usr/lib/python2.5/site-packages/libxml2.pyc
-  /usr/lib/python2.5/site-packages/libxml2.pyo
-  /usr/lib/python2.5/site-packages/libxml2mod.dll
-  /usr/lib/python2.5/site-packages/libxml2mod.la
-  /usr/share/doc/python-libxml2/TODO
-  /usr/share/doc/python-libxml2/examples/*
-
-(libxml2-devel)
-  /usr/bin/xml2-config
-  /usr/include/libxml2/libxml/DOCBparser.h
-  /usr/include/libxml2/libxml/HTMLparser.h
-  /usr/include/libxml2/libxml/HTMLtree.h
-  /usr/include/libxml2/libxml/SAX.h
-  /usr/include/libxml2/libxml/SAX2.h
-  /usr/include/libxml2/libxml/c14n.h
-  /usr/include/libxml2/libxml/catalog.h
-  /usr/include/libxml2/libxml/chvalid.h
-  /usr/include/libxml2/libxml/debugXML.h
-  /usr/include/libxml2/libxml/dict.h
-  /usr/include/libxml2/libxml/encoding.h
-  /usr/include/libxml2/libxml/entities.h
-  /usr/include/libxml2/libxml/globals.h
-  /usr/include/libxml2/libxml/hash.h
-  /usr/include/libxml2/libxml/list.h
-  /usr/include/libxml2/libxml/nanoftp.h
-  /usr/include/libxml2/libxml/nanohttp.h
-  /usr/include/libxml2/libxml/parser.h
-  /usr/include/libxml2/libxml/parserInternals.h
-  /usr/include/libxml2/libxml/pattern.h
-  /usr/include/libxml2/libxml/relaxng.h
-  /usr/include/libxml2/libxml/schemasInternals.h
-  /usr/include/libxml2/libxml/schematron.h
-  /usr/include/libxml2/libxml/threads.h
-  /usr/include/libxml2/libxml/tree.h
-  /usr/include/libxml2/libxml/uri.h
-  /usr/include/libxml2/libxml/valid.h
-  /usr/include/libxml2/libxml/xinclude.h
-  /usr/include/libxml2/libxml/xlink.h
-  /usr/include/libxml2/libxml/xmlIO.h
-  /usr/include/libxml2/libxml/xmlautomata.h
-  /usr/include/libxml2/libxml/xmlerror.h
-  /usr/include/libxml2/libxml/xmlexports.h
-  /usr/include/libxml2/libxml/xmlmemory.h
-  /usr/include/libxml2/libxml/xmlmodule.h
-  /usr/include/libxml2/libxml/xmlreader.h
-  /usr/include/libxml2/libxml/xmlregexp.h
-  /usr/include/libxml2/libxml/xmlsave.h
-  /usr/include/libxml2/libxml/xmlschemas.h
-  /usr/include/libxml2/libxml/xmlschemastypes.h
-  /usr/include/libxml2/libxml/xmlstring.h
-  /usr/include/libxml2/libxml/xmlunicode.h
-  /usr/include/libxml2/libxml/xmlversion.h
-  /usr/include/libxml2/libxml/xmlwriter.h
-  /usr/include/libxml2/libxml/xpath.h
-  /usr/include/libxml2/libxml/xpathInternals.h
-  /usr/include/libxml2/libxml/xpointer.h
-  /usr/lib/libxml2.dll.a
-  /usr/lib/libxml2.la
-  /usr/lib/pkgconfig/libxml-2.0.pc
-  /usr/lib/xml2Conf.sh
-  /usr/share/aclocal/libxml.m4
-  /usr/share/gtk-doc/html/libxml2/*
-  /usr/share/man/man1/xml2-config.1.gz
-  /usr/share/man/man3/libxml.3.gz
-
-(libxml2-doc)
-  /usr/share/doc/libxml2/examples/*
-  /usr/share/doc/libxml2/html/*
-
-------------------
-
 Port Notes:
+
+----- version 2.7.4-1 -----
+Version bump.
 
 ----- version 2.7.3-11 -----
 Security patches for CVE-2009-2414 and CVE-2009-2416.
