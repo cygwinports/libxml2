@@ -10,24 +10,24 @@ library is written in C a variety of language bindings make it available
 in other environments.
 
 Runtime requirements:
-  cygwin-1.7.0-67
+  cygwin-1.7.5-1
   libgcc1-4.3.4-3
-  libiconv2-1.13-10
+  libiconv2-1.13.1-1
   libreadline7-6.0.3-2
   zlib0-1.2.3-10
 (python-libxml2)
-  python-2.5.4-10
+  python-2.6.5-1
 
 Build requirements:
-  autoconf2.5-2.63-10
-  automake1.10-1.10.2-10
-  binutils-2.19.51-1
-  cygport-0.9.10-1
+  autoconf2.5-2.65-1
+  automake1.10-1.10.3-1
+  binutils-2.20.51-1
+  cygport-0.9.83-1
   gawk-3.1.7-1
   gcc4-core-4.3.4-3
-  libtool-2.2.7a-14
+  libtool-2.2.7a-15
   make-3.81-2
-  sed-4.1.5-2
+  sed-4.2.1-1
 
 Canonical homepage:
   http://xmlsoft.org/
@@ -38,22 +38,25 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack libxml2-2.7.6-X-src.tar.bz2
+  unpack libxml2-2.7.7-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./libxml2-2.7.6-X.cygport all
+  cygport ./libxml2-2.7.7-X.cygport all
 
 This will create:
-  /usr/src/libxml2-2.7.6-X-src.tar.bz2
-  /usr/src/libxml2-2.7.6-X.tar.bz2
-  /usr/src/libxml2-devel-2.7.6-X.tar.bz2
-  /usr/src/libxml2-doc-2.7.6-X.tar.bz2
-  /usr/src/python-libxml2-2.7.6-X.tar.bz2
+  /usr/src/libxml2-2.7.7-X-src.tar.bz2
+  /usr/src/libxml2-2.7.7-X.tar.bz2
+  /usr/src/libxml2-devel-2.7.7-X.tar.bz2
+  /usr/src/libxml2-doc-2.7.7-X.tar.bz2
+  /usr/src/python-libxml2-2.7.7-X.tar.bz2
 
 -------------------------------------------
 
 Port Notes:
+
+----- version 2.7.7-1 -----
+Version bump; bindings built for python2.6.
 
 ----- version 2.7.6-1 -----
 Version bump.
