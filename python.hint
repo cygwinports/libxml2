@@ -1,5 +1,5 @@
 category: Gnome Python
-requires: libgcc1 libxml2 python
+requires: libxml2 python
 external-source: libxml2
 sdesc: "XML C parser and toolkit (Python bindings)"
 ldesc: "Libxml2 is the XML C parser and toolkit developed for the

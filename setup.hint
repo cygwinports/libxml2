@@ -1,5 +1,5 @@
-category: Gnome Doc Libs Text Devel Interpreters
-requires: libgcc1 libiconv2 libreadline7 zlib0
+category: Gnome Libs Text
+requires: libiconv2 libreadline7 zlib0
 sdesc: "XML C parser and toolkit (runtime and applications)"
 ldesc: "Libxml2 is the XML C parser and toolkit developed for the
 Gnome project (but usable outside of the Gnome platform), it is free

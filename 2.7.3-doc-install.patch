@@ -9,19 +9,6 @@
  EXAMPLES_DIR=$(BASE_DIR)/$(DOC_MODULE)/examples
  
  install-data-local: 
---- origsrc/libxml2-2.7.3/doc/devhelp/Makefile.am	2007-01-03 07:07:26.000000000 -0600
-+++ src/libxml2-2.7.3/doc/devhelp/Makefile.am	2009-03-16 21:35:46.531250000 -0500
-@@ -67,7 +67,7 @@ libxml2.devhelp $(HTML_FILES): devhelp.x
- 
- install-data-local: 
- 	$(mkinstalldirs) $(DESTDIR)$(DEVHELP_DIR)
--	-@INSTALL@ -m 0644 libxml2.devhelp $(DESTDIR)$(DEVHELP_DIR)
--	-@INSTALL@ -m 0644 $(EXTRA_FORMAT) $(DESTDIR)$(DEVHELP_DIR)
--	-@INSTALL@ -m 0644 $(HTML_FILES) $(DESTDIR)$(DEVHELP_DIR)
-+	-@INSTALL@ -m 0644 $(srcdir)/libxml2.devhelp $(DESTDIR)$(DEVHELP_DIR)
-+	-@INSTALL@ -m 0644 $(addprefix $(srcdir)/,$(EXTRA_FORMAT)) $(DESTDIR)$(DEVHELP_DIR)
-+	-@INSTALL@ -m 0644 $(addprefix $(srcdir)/,$(HTML_FILES)) $(DESTDIR)$(DEVHELP_DIR)
- 
 --- origsrc/libxml2-2.7.3/python/Makefile.am	2008-02-21 15:53:06.000000000 -0600
 +++ src/libxml2-2.7.3/python/Makefile.am	2009-03-16 21:08:12.859375000 -0500
 @@ -9,7 +9,7 @@ INCLUDES = \
