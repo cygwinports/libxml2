@@ -1,4 +1,4 @@
 if test ! -f /etc/xml/catalog; then
-	mkdir -p /etc/xml
+	/bin/mkdir -p /etc/xml
 	/usr/bin/xmlcatalog --noout --create /etc/xml/catalog
 fi
