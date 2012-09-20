@@ -1,0 +1,51 @@
+inherit python
+
+NAME="libxml2"
+VERSION=2.8.0
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="GNOME XML library"
+DESCRIPTION="Libxml2 is the XML C parser and toolkit developed for the GNOME
+project. XML itself is a metalanguage to design markup languages, i.e. text
+language where semantic and structure are added to the content using extra
+'markup' information enclosed between angle brackets. HTML is the most well-
+known markup language. Though the library is written in C, a variety of
+language bindings make it available in other environments."
+HOMEPAGE="http://xmlsoft.org/"
+SRC_URI="ftp://xmlsoft.org/libxml2/${NAME}-${VERSION}.tar.gz"
+PATCH_URI="2.7.3-doc-install.patch
+           http://dev.gentoo.org/~tetromino/distfiles/libxml2/libxml2-2.8.0-namespace-node-patches.tar.bz2"
+
+PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python-${NAME}"
+libxml2_SUMMARY="${SUMMARY} (runtime)"
+libxml2_CONTENTS="--exclude=*-config* --exclude=examples --exclude=html
+                  --exclude=python-${NAME} etc/ usr/bin/ usr/share/doc/ usr/share/man/man1/"
+libxml2_devel_SUMMARY="${SUMMARY} (development)"
+libxml2_devel_CONTENTS="--exclude=python* usr/bin/xml2-config usr/include/
+                        usr/lib/ usr/share/aclocal/ usr/share/gtk-doc/
+                        usr/share/man/man1/xml2-config* usr/share/man/man3/"
+libxml2_doc_SUMMARY="${SUMMARY} (API documentation)"
+libxml2_doc_CONTENTS="usr/share/doc/${NAME}/*/"
+python_libxml2_CATEGORY="Python"
+python_libxml2_SUMMARY="${SUMMARY} (Python bindings)"
+python_libxml2_CONTENTS="${PYTHON_SITELIB#/} usr/share/doc/python-${NAME}/"
+
+DIFF_EXCLUDES="xmlversion.h setup.py"
+
+CYGCONF_ARGS="
+	--enable-ipv6
+	--with-history
+	--with-html-dir=/usr/share/doc
+	--with-html-subdir=${NAME}/html
+"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	mv ${D}${PYTHON_SITELIB}/{cyg,lib}xml2mod.dll
+	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON_SITELIB}/libxml2mod.la
+	python_optimize
+}
+
+KEEP_LA_FILES="shared"
