@@ -2,7 +2,7 @@ inherit python
 
 NAME="libxml2"
 VERSION=2.9.0
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="GNOME XML library"
 DESCRIPTION="Libxml2 is the XML C parser and toolkit developed for the GNOME
