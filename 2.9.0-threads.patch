@@ -1,0 +1,17 @@
+Not sure why it works in global scope but not here, but:
+
+threads.c: In function 'xmlCleanupThreads':
+threads.c:918:20: error: expected expression before '{' token
+
+--- origsrc/libxml2-2.9.0/threads.c	2012-09-10 22:52:46.000000000 -0500
++++ src/libxml2-2.9.0/threads.c	2013-01-28 04:36:52.726317100 -0600
+@@ -915,7 +915,8 @@ xmlCleanupThreads(void)
+ #ifdef HAVE_PTHREAD_H
+     if ((libxml_is_threaded)  && (pthread_key_delete != NULL))
+         pthread_key_delete(globalkey);
+-    once_control = PTHREAD_ONCE_INIT;
++    once_control.mutex = PTHREAD_MUTEX_INITIALIZER;
++    once_control.state = 0;
+ #elif defined(HAVE_WIN32_THREADS) && !defined(HAVE_COMPILER_TLS) && (!defined(LIBXML_STATIC) || defined(LIBXML_STATIC_FOR_DLL))
+     if (globalkey != TLS_OUT_OF_INDEXES) {
+         xmlGlobalStateCleanupHelperParams *p;

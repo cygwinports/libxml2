@@ -13,8 +13,11 @@ known markup language. Though the library is written in C, a variety of
 language bindings make it available in other environments."
 HOMEPAGE="http://xmlsoft.org/"
 SRC_URI="ftp://xmlsoft.org/libxml2/${NAME}-${VERSION}.tar.gz"
-PATCH_URI="2.7.3-doc-install.patch
-           http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.0-do-not-check-crc.patch?h=f18"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.0-do-not-check-crc.patch?h=f18
+	2.7.3-doc-install.patch
+	2.9.0-threads.patch
+"
 
 PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python-${NAME}"
 libxml2_SUMMARY="${SUMMARY} (runtime)"
@@ -37,7 +40,6 @@ CYGCONF_ARGS="
 	--with-history
 	--with-html-dir=/usr/share/doc
 	--with-html-subdir=${NAME}/html
-	--without-threads
 "
 
 src_install() {
