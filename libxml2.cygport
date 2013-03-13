@@ -50,5 +50,3 @@ src_install() {
 	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON_SITELIB}/libxml2mod.la
 	python_optimize
 }
-
-KEEP_LA_FILES="shared"
