@@ -17,6 +17,7 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.0-do-not-check-crc.patch
 	http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.2-catalog-revert.patch
 	2.7.3-doc-install.patch
+	2.9.2-zlib-ldflags.patch
 "
 
 PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python-${NAME}"
