@@ -1,0 +1,22 @@
+--- origsrc/libxml2-2.9.3/configure.ac	2015-11-27 14:06:13.268244400 -0600
++++ src/libxml2-2.9.3/configure.ac	2015-11-27 14:05:30.019752500 -0600
+@@ -899,7 +899,7 @@ if test "$with_python" != "no" ; then
+ 	fi
+     fi
+     pythondir='$(PYTHON_SITE_PACKAGES)'
+-    PYTHON_LIBS=`python$PYTHON_VERSION-config --ldflags`
++    PYTHON_LIBS=`$PYTHON-config --ldflags`
+ else
+     PYTHON=
+ fi
+@@ -1592,10 +1592,6 @@ case "$host" in
+  ;;
+  *-*-cygwin*)
+  CYGWIN_EXTRA_LDFLAGS="-no-undefined"
+- if test "${PYTHON}" != ""
+- then
+-   CYGWIN_EXTRA_PYTHON_LIBADD="-L/usr/lib/python${PYTHON_VERSION}/config -lpython${PYTHON_VERSION}"
+- fi
+  ;;
+ esac
+ AC_SUBST(WIN32_EXTRA_LIBADD)
