@@ -1,7 +1,7 @@
 inherit python python3
 
 NAME="libxml2"
-VERSION=2.9.3
+VERSION=2.9.4
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="GNOME XML library"
@@ -16,7 +16,6 @@ SRC_URI="ftp://xmlsoft.org/libxml2/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.0-do-not-check-crc.patch
 	2.7.3-doc-install.patch
-	2.9.2-zlib-ldflags.patch
 	2.9.3-python3-libs.patch
 "
 
