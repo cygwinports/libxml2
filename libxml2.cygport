@@ -1,8 +1,8 @@
-inherit python python3
+inherit python2 python3
 
 NAME="libxml2"
 VERSION=2.9.4
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="GNOME XML library"
 DESCRIPTION="Libxml2 is the XML C parser and toolkit developed for the GNOME
@@ -15,11 +15,12 @@ HOMEPAGE="http://xmlsoft.org/"
 SRC_URI="ftp://xmlsoft.org/libxml2/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.0-do-not-check-crc.patch
+	http://pkgs.fedoraproject.org/cgit/libxml2.git/plain/libxml2-2.9.4-remove-pyverify_fd.patch
 	2.7.3-doc-install.patch
 	2.9.3-python3-libs.patch
 "
 
-PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python-${NAME} python3-${NAME}"
+PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python2-${NAME} python3-${NAME}"
 libxml2_SUMMARY="${SUMMARY} (runtime)"
 libxml2_CONTENTS="--exclude=*-config* --exclude=examples --exclude=html
                   --exclude=python-${NAME} etc/ usr/bin/ usr/share/doc/ usr/share/man/man1/"
@@ -34,9 +35,10 @@ libxml2_doc_CONTENTS="
 	usr/share/doc/python-${NAME}/
 	usr/share/gtk-doc/
 "
-python_libxml2_CATEGORY="Python"
-python_libxml2_SUMMARY="${SUMMARY} (Python bindings)"
-python_libxml2_CONTENTS=${PYTHON_SITELIB#/}
+python2_libxml2_CATEGORY="Python"
+python2_libxml2_SUMMARY="${SUMMARY} (Python bindings)"
+python2_libxml2_OBSOLETES="python-libxml2"
+python2_libxml2_CONTENTS=${PYTHON2_SITELIB#/}
 python3_libxml2_CATEGORY="Python"
 python3_libxml2_SUMMARY="${SUMMARY} (Python3 bindings)"
 python3_libxml2_CONTENTS=${PYTHON3_SITELIB#/}
@@ -54,7 +56,7 @@ src_compile() {
 	cd ${S}
 	cygautoreconf
 	cd ${B}
-	cygconf --with-python=${PYTHON}
+	cygconf --with-python=${PYTHON2}
 	cygmake
 
 	mkdir -p ${B}/python3_build
@@ -68,11 +70,9 @@ src_install() {
 	cyginstall
 	cyginstall -C python3_build/python top_builddir=${B}
 
-	mv ${D}${PYTHON_SITELIB}/{cyg,lib}xml2mod.dll
-	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON_SITELIB}/libxml2mod.la
-	python_optimize
+	mv ${D}${PYTHON2_SITELIB}/{cyg,lib}xml2mod.dll
+	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON2_SITELIB}/libxml2mod.la
 
 	mv ${D}${PYTHON3_SITELIB}/{cyg,lib}xml2mod.dll
 	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON3_SITELIB}/libxml2mod.la
-	python3_optimize
 }
