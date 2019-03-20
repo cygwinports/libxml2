@@ -1,7 +1,7 @@
-inherit python2 python3
+inherit python2
 
 NAME="libxml2"
-VERSION=2.9.8
+VERSION=2.9.9
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="GNOME XML library"
@@ -14,12 +14,12 @@ language bindings make it available in other environments."
 HOMEPAGE="http://xmlsoft.org/"
 SRC_URI="ftp://xmlsoft.org/libxml2/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="
-	https://src.fedoraproject.org/cgit/rpms/libxml2.git/plain/0001-Revert-Change-calls-to-xmlCharEncInput-to-set-flush-.patch
+	https://src.fedoraproject.org/cgit/rpms/libxml2.git/plain/libxml2-2.9.8-python3-unicode-errors.patch
 	2.7.3-doc-install.patch
 	2.9.3-python3-libs.patch
 "
 
-PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python2-${NAME} python3-${NAME}"
+PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc python27-${NAME} python36-${NAME} python37-${NAME}"
 libxml2_SUMMARY="${SUMMARY} (runtime)"
 libxml2_CONTENTS="--exclude=*-config* --exclude=examples --exclude=html
                   --exclude=python-${NAME} etc/ usr/bin/ usr/share/doc/ usr/share/man/man1/"
@@ -34,13 +34,17 @@ libxml2_doc_CONTENTS="
 	usr/share/doc/python-${NAME}/
 	usr/share/gtk-doc/
 "
-python2_libxml2_CATEGORY="Python"
-python2_libxml2_SUMMARY="${SUMMARY} (Python bindings)"
-python2_libxml2_OBSOLETES="python-libxml2"
-python2_libxml2_CONTENTS=${PYTHON2_SITELIB#/}
-python3_libxml2_CATEGORY="Python"
-python3_libxml2_SUMMARY="${SUMMARY} (Python3 bindings)"
-python3_libxml2_CONTENTS=${PYTHON3_SITELIB#/}
+python27_libxml2_CATEGORY="Python"
+python27_libxml2_SUMMARY="${SUMMARY} (Python bindings)"
+python27_libxml2_OBSOLETES="python-libxml2 python2-libxml2"
+python27_libxml2_CONTENTS="usr/lib/python2.7/site-packages/*"
+python36_libxml2_CATEGORY="Python"
+python36_libxml2_SUMMARY="${SUMMARY} (Python3 bindings)"
+python36_libxml2_OBSOLETES="python3-libxml2"
+python36_libxml2_CONTENTS="usr/lib/python3.6/site-packages/*"
+python37_libxml2_CATEGORY="Python"
+python37_libxml2_SUMMARY="${SUMMARY} (Python3 bindings)"
+python37_libxml2_CONTENTS="usr/lib/python3.7/site-packages/*"
 
 DIFF_EXCLUDES="xmlversion.h setup.py"
 
@@ -58,20 +62,26 @@ src_compile() {
 	cygconf --with-python=${PYTHON2}
 	cygmake
 
-	mkdir -p ${B}/python3_build
-	cd ${B}/python3_build
-	cygconf --with-python=${PYTHON3}
+	mkdir -p ${B}/python36_build
+	cd ${B}/python36_build
+	cygconf --with-python=/usr/bin/python3.6
+	cygmake -C python top_builddir=${B}
+
+	mkdir -p ${B}/python37_build
+	cd ${B}/python37_build
+	cygconf --with-python=/usr/bin/python3.7
 	cygmake -C python top_builddir=${B}
 }
 
 src_install() {
 	cd ${B}
 	cyginstall
-	cyginstall -C python3_build/python top_builddir=${B}
+	cyginstall -C python36_build/python top_builddir=${B}
+	cyginstall -C python37_build/python top_builddir=${B}
 
-	mv ${D}${PYTHON2_SITELIB}/{cyg,lib}xml2mod.dll
-	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON2_SITELIB}/libxml2mod.la
-
-	mv ${D}${PYTHON3_SITELIB}/{cyg,lib}xml2mod.dll
-	sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}${PYTHON3_SITELIB}/libxml2mod.la
+	for v in 2.7 3.6 3.7
+	do
+		mv ${D}/usr/lib/python$v/site-packages/{cyg,lib}xml2mod.dll
+		sed -i -e "s|cygxml2mod|libxml2mod|g" ${D}/usr/lib/python$v/site-packages/libxml2mod.la
+	done
 }
