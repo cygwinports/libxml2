@@ -25,6 +25,7 @@ libxml2_SUMMARY="${SUMMARY} (runtime)"
 libxml2_CONTENTS="--exclude=*-config* --exclude=examples --exclude=html
                   --exclude=python-${NAME} etc/ usr/bin/ usr/share/doc/ usr/share/man/man1/"
 libxml2_devel_SUMMARY="${SUMMARY} (development)"
+libxml2_devel_REQUIRES="libiconv-devel"
 libxml2_devel_CONTENTS="--exclude=python* usr/bin/xml2-config usr/include/
                         usr/lib/ usr/share/aclocal/
                         usr/share/man/man1/xml2-config* usr/share/man/man3/"
